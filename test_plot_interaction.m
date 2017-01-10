@@ -85,7 +85,7 @@ plot_data = rand(10,2); plot_data(:,1) = plot_data(:,1) - 0.5;
 plot(plot_data(:,1),plot_data(:,2),'o');
 xlabel('mu'); ylabel('sig')
 
-title('Control window')
+title('Reference Window')
 
  x = -1:0.01:1;
 
@@ -99,7 +99,7 @@ add_plot_interaction(gca,interaction_data1)
 xlabel('Interaction Term X')
 ylabel('Interaction Term Y')
 
-title('Interaction window 1')
+title('Interaction Window 1')
 
 % Second window
 [xm,ym] = meshgrid(x);
@@ -110,8 +110,8 @@ end
 
 add_plot_interaction(gca,interaction_data2)
 
-xlabel('Interaction term X')
-ylabel('Interaction term Y')
+xlabel('Interaction Term X')
+ylabel('Interaction Term Y')
 
 title('Interaction window 2')
 

@@ -278,7 +278,8 @@ set(hax(1).Children(1),'Tag','current_point')                              % Nee
 set(allchild(hax(1)),'HitTest','off')                                      % Set the data lines so as not to get in the way of mouse-clicks
 
 child_ind = find(strcmpi(get(axis_handle.Parent.Children,'Tag'),...        % Find the indices of the existing interaction subplots
-    'interaction_data')); 
+    'interaction_data'))';
+child_ind = fliplr(child_ind);                                             % Matlab orders the axes in reverse
 for pl = 1:length(child_ind)                                               % Copy over pre-existing interaction plots
     s1=subplot(M,N,p); p=p+1;                                              % Place an empty subplot where the existing plot will be copied to
     pos1=get(s1,'Position');                                               % We don't need the actual subplot canvas, we should use Matlab's default placement to help position our plot
@@ -293,7 +294,7 @@ hax(N)=subplot(M,N,p); p=p+1; axis equal                                   % Cre
 switch lower(axis_handle.UserData.subplot_type{N-1})
     case {'points','bar'}
         if min(size(interaction_data{1}{1}))==1                            % If x vector is not explicitly included
-            plot(interaction_data{n}{1},varargin{:})
+            plot(interaction_data{1}{1},varargin{:})
         else
             plot(interaction_data{1}{1}(:,1),...
                 interaction_data{1}{1}(:,2),varargin{:})                   % Plot some example data but make it invisible before any specific point is clicked
